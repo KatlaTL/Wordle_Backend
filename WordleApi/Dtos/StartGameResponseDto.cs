@@ -4,5 +4,5 @@ public class StartGameResponseDto
 
     public string Word { get; set;} = String.Empty;
 
-    public int AttemptsLeft {get; set;} = 6;
+    public int AttemptsLeft {get; set;}
 }
