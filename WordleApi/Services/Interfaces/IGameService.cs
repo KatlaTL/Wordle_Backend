@@ -2,7 +2,6 @@
 public interface IGameService
 {
    StartGameResponseDto NewGame();
-   StartGameResponseDto? GetGame(Guid gameId);
-
-   
+   Result<StartGameResponseDto> GetGame(Guid gameId);
+   Result<GuessWordResponseDto> EvaluateGuess(Guid gameId, string word);
 }

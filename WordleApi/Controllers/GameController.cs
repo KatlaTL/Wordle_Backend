@@ -20,17 +20,20 @@ public class GameController : ControllerBase
     [HttpGet("game/{gameId}")]
     public ActionResult<StartGameResponseDto> GetGame(Guid gameId)
     {
-        var dto = _gameService.GetGame(gameId);
+        var result = _gameService.GetGame(gameId);
 
-        if (dto == null) return NotFound();
+        if (!result.IsSuccess) return NotFound();
 
-        return Ok(dto);
+        return Ok(result.Value);
     }
 
     [HttpPost("game/{gameId}/guess")]
     public ActionResult<GuessWordResponseDto> Guess(Guid gameId, [FromBody] GuessWordRequestDto request)
     {
-        // TO-DO add guess logic
-        return Ok(new {});
+        var result = _gameService.EvaluateGuess(gameId, request.Word);
+
+        if (!result.IsSuccess) return BadRequest(result.Error);
+
+        return Ok(result.Value);
     }
 }

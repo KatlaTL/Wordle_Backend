@@ -5,7 +5,7 @@ public static class GameMapper
         return new StartGameResponseDto
         {
             GameId = game.Id,
-            Word = game.Solution.Value,
+            WordLength = game.Solution.Value.Length,
             AttemptsLeft = game.AttemptsLeft
         };
     }

@@ -13,11 +13,7 @@ public class WordRepository : IWordRepository
         return File.ReadLines(filePath)
             .Where(line => !String.IsNullOrWhiteSpace(line))
             .Where(line => !line.StartsWith("#"))
-            .Select((line, Index) => new Word
-            {
-                Id = Index + 1,
-                Value = line.Trim().ToString()
-            })
+            .Select((line, Index) => new Word(line.Trim().ToString()))
             .ToList();
     }
 

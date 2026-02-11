@@ -19,4 +19,14 @@ public class InMemoryGameRepository : IGameRepository
 
         return game;
     }
+
+    public void EndGame(Guid gameId)
+    {
+        bool removed = _games.TryRemove(gameId, out _);
+
+        if (removed)
+        {
+            Console.WriteLine($"Game {gameId} has ended and was removed from memory");
+        }
+    }
 }
