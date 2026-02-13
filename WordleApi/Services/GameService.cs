@@ -84,7 +84,7 @@ public class GameService : IGameService
             IsCorrect = isCorrect,
             IsFinished = game.IsFinished,
             CorrectPositions = correctPositions.ToArray(),
-            PresentButWrongPosition = presentButWrongPosition.ToArray()
+            PresentButWrongPositions = presentButWrongPosition.ToArray()
         });
     }
 
